@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CakeShop | Baked with Love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--pink:#e85b91;--pink-dark:#d94780;--soft:#fff0f5;--ink:#25212a;--muted:#77717a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans",sans-serif;background:#fff}
+    a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer;border:0}
+    .topbar{height:30px;background:#f4a8c5;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 6%;font-size:11px}
+    .navbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #00000008}
+    .logo{display:flex;align-items:center;gap:9px;font-family:"Playfair Display",serif;font-size:25px;font-weight:800;color:#28212a;line-height:1}
+    .logo .cake{font-size:29px}.logo span em{color:var(--pink);font-style:normal}.logo small{display:block;font:10px "DM Sans";letter-spacing:.5px;color:#777;text-align:center;margin-top:4px}
+    nav{display:flex;gap:30px;font-size:14px;font-weight:600}nav a:hover{color:var(--pink)}
+    .nav-icons{display:flex;gap:19px;font-size:22px;align-items:center}.cart-count{font-size:10px;background:var(--pink);color:#fff;border-radius:50%;padding:3px 6px;vertical-align:top}
+    .hero{min-height:390px;background:linear-gradient(90deg,#fff2f6 0%,#fce8ef 48%,#f6dce6 100%);display:grid;grid-template-columns:1fr 1.1fr;align-items:center;padding:40px 7%;overflow:hidden}
+    .hero-copy{z-index:1}.hero h1{font:800 clamp(34px,4vw,48px)/1.08 "Playfair Display",serif;margin:0 0 20px}.hero h1 span{color:var(--pink)}
+    .hero p{font-size:16px;line-height:1.55;color:#555;max-width:420px;margin:0 0 22px}.btn{display:inline-block;padding:12px 24px;border-radius:4px;font-weight:700;font-size:13px;margin-right:12px}.btn-pink{background:var(--pink);color:white;box-shadow:0 5px 14px #e85b9133}.btn-pink:hover{background:var(--pink-dark)}.btn-white{background:white;border:1px solid #ddd}
+    .hero-image{height:345px;background:url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=85") center/cover;border-radius:48% 48% 8px 8px;box-shadow:0 15px 40px #9b50602b}
+    .features{max-width:1120px;margin:-1px auto 28px;background:white;box-shadow:0 5px 22px #0000000c;border-radius:9px;display:grid;grid-template-columns:repeat(4,1fr);padding:20px 15px;position:relative;gap:8px}
+    .feature{display:flex;align-items:center;justify-content:center;gap:13px;border-right:1px solid #eee}.feature:last-child{border:0}.feature .ico{font-size:27px;color:var(--pink)}.feature b{display:block;font-size:13px}.feature small{color:var(--muted);font-size:11px}
+    .section{padding:18px 6% 25px;text-align:center}.section h2{font:700 27px "Playfair Display",serif;margin:0 0 8px}.underline{width:42px;height:3px;background:var(--pink);margin:0 auto 24px;border-radius:5px}
+    .categories{display:grid;grid-template-columns:repeat(5,1fr);gap:25px;max-width:980px;margin:auto}.category{font-size:13px;font-weight:700}.category img{width:132px;height:132px;max-width:100%;object-fit:cover;border-radius:50%;margin-bottom:9px;transition:.25s}.category:hover img{transform:translateY(-5px);box-shadow:0 9px 20px #0002}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1120px;margin:auto;text-align:left}.product{border:1px solid #eee;border-radius:7px;overflow:hidden;position:relative;box-shadow:0 4px 15px #00000008}.product img{width:100%;height:180px;object-fit:cover;display:block}.heart{position:absolute;right:10px;top:10px;background:#fff;border-radius:50%;width:32px;height:32px;color:var(--pink);font-size:19px}.product-info{padding:12px}.product h3{font-size:14px;margin:0 0 7px}.stars{color:#e6b833;font-size:13px}.stars small{color:#888;margin-left:5px}.price{font-size:14px;font-weight:700;margin:7px 0 10px}.add{background:var(--pink);color:white;padding:9px 13px;border-radius:4px;font-size:11px;font-weight:700;width:100%}.add:hover{background:var(--pink-dark)}
+    .custom{margin-top:20px;background:linear-gradient(100deg,#fce1eb,#f9cbdc);padding:30px 8%;display:flex;align-items:center;justify-content:space-between;gap:25px}.custom h2{font:700 27px/1.2 "Playfair Display";margin:0 0 7px}.custom h2 span{color:var(--pink-dark)}.custom p{margin:0 0 16px;color:#5d5259}.custom img{width:35%;max-height:190px;object-fit:cover;border-radius:50%}
+    footer{padding:28px 6% 15px;background:#fff9fb}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:35px}.footer-grid h4{margin:0 0 12px;font-size:13px}.footer-grid p,.footer-grid a{font-size:12px;color:#6c6670;line-height:1.9;display:block}.footer-grid a:hover{color:var(--pink)}.social{font-size:20px;letter-spacing:7px}.newsletter{display:flex;margin-top:10px}.newsletter input{min-width:0;width:100%;padding:10px;border:1px solid #ddd;border-radius:4px 0 0 4px}.newsletter button{background:var(--pink);color:#fff;padding:0 12px;font-size:11px;border-radius:0 4px 4px 0}.copyright{border-top:1px solid #eee;margin-top:20px;padding-top:13px;font-size:11px;color:#777;display:flex;justify-content:space-between}
+    #toast{position:fixed;bottom:20px;right:20px;background:#29232b;color:#fff;padding:12px 18px;border-radius:7px;opacity:0;transform:translateY(10px);transition:.25s;z-index:30;font-size:13px}#toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:800px){nav{gap:13px}.hero{padding:35px 5%;grid-template-columns:1fr 1fr}.hero-image{height:280px}.features{margin:0 12px 20px;grid-template-columns:repeat(2,1fr)}.feature:nth-child(2){border:0}.categories{gap:12px}.category img{width:105px;height:105px}.products{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.topbar{font-size:9px;padding:0 3%}.navbar{height:auto;min-height:65px;padding:12px 4%;flex-wrap:wrap;gap:12px}.logo{font-size:21px}nav{order:3;width:100%;justify-content:space-between;gap:7px;font-size:11px}.nav-icons{font-size:19px}.hero{grid-template-columns:1fr;padding:34px 7%;text-align:center}.hero p{margin-left:auto;margin-right:auto}.hero-image{height:220px;margin-top:25px}.btn{padding:11px 16px;margin:3px}.features{padding:15px 5px}.feature{justify-content:flex-start;padding:8px}.feature .ico{font-size:21px}.feature b{font-size:11px}.feature small{font-size:9px}.section{padding:20px 4%}.section h2{font-size:24px}.categories{grid-template-columns:repeat(3,1fr);row-gap:20px}.category img{width:92px;height:92px}.category{font-size:11px}.products{gap:12px}.product img{height:135px}.product-info{padding:9px}.product h3{font-size:12px}.custom{padding:25px 7%;}.custom h2{font-size:22px}.custom p{font-size:12px}.custom img{width:38%;max-height:125px}.footer-grid{gap:20px}.copyright{gap:10px;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><span>📍 Delivering happiness to your doorstep!</span><span>☎ +91 98765 43210 &nbsp; ✉ hello@cakeshop.com</span></div>
+  <header class="navbar">
+    <a class="logo" href="#"><span class="cake">🎂</span><span>Cake<em>Shop</em><small>— Baked with Love —</small></span></a>
+    <nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#categories">Cakes⌄</a><a href="#custom">Occasions⌄</a><a href="#about">About Us</a><a href="#contact">Contact</a></nav>
+    <div class="nav-icons"><span>⌕</span><span>♙</span><span>🛒<sup class="cart-count" id="cartCount">0</sup></span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Delicious Cakes<br>for <span>Every Occasion</span></h1>
+        <p>Handmade with love using the finest ingredients. Order online and get your favorite cakes delivered to your doorstep.</p>
+        <a class="btn btn-pink" href="#shop">SHOP NOW</a><a class="btn btn-white" href="#custom">🛒 CUSTOM CAKE</a>
+      </div>
+      <div class="hero-image" role="img" aria-label="Beautiful decorated cake"></div>
+    </section>
+
+    <section class="features">
+      <div class="feature"><span class="ico">🛵</span><span><b>Fast Delivery</b><small>On time, every time</small></span></div>
+      <div class="feature"><span class="ico">🏅</span><span><b>Best Quality</b><small>We use premium ingredients</small></span></div>
+      <div class="feature"><span class="ico">🎂</span><span><b>100% Fresh</b><small>Baked fresh for you</small></span></div>
+      <div class="feature"><span class="ico">🔒</span><span><b>Secure Payments</b><small>100% secure checkout</small></span></div>
+    </section>
+
+    <section class="section" id="categories">
+      <h2>Shop by Category</h2><div class="underline"></div>
+      <div class="categories">
+        <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Birthday cake">Birthday Cakes</a>
+        <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1519741199876-1c9e0e7f3f5a?auto=format&fit=crop&w=400&q=80" alt="Wedding cake">Wedding Cakes</a>
+        <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=400&q=80" alt="Anniversary cake">Anniversary Cakes</a>
+        <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=400&q=80" alt="Photo cake">Photo Cakes</a>
+        <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=400&q=80" alt="Cupcakes">Cupcakes</a>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <h2>Best Sellers</h2><div class="underline"></div>
+      <div class="products">
+        <article class="product"><button class="heart" aria-label="Add to wishlist">♡</button><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=85" alt="Chocolate delight cake"><div class="product-info"><h3>Chocolate Delight</h3><div class="stars">★★★★★ <small>(120)</small></div><div class="price">Rs. 2,499</div><button class="add">🛒 ADD TO CART</button></div></article>
+        <article class="product"><button class="heart" aria-label="Add to wishlist">♡</button><img src="https://images.unsplash.com/photo-1586788680434-30d324b2d6b8?auto=format&fit=crop&w=650&q=85" alt="Red velvet cake"><div class="product-info"><h3>Red Velvet Cake</h3><div class="stars">★★★★★ <small>(99)</small></div><div class="price">Rs. 2,699</div><button class="add">🛒 ADD TO CART</button></div></article>
+        <article class="product"><button class="heart" aria-label="Add to wishlist">♡</button><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=650&q=85" alt="Black forest cake"><div class="product-info"><h3>Black Forest Cake</h3><div class="stars">★★★★★ <small>(110)</small></div><div class="price">Rs. 2,399</div><button class="add">🛒 ADD TO CART</button></div></article>
+        <article class="product"><button class="heart" aria-label="Add to wishlist">♡</button><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=650&q=85" alt="Mango cake"><div class="product-info"><h3>Mango Cake</h3><div class="stars">★★★★★ <small>(85)</small></div><div class="price">Rs. 2,299</div><button class="add">🛒 ADD TO CART</button></div></article>
+      </div>
+    </section>
+
+    <section class="custom" id="custom">
+      <div><h2>Custom Cake for<br><span>Your Special Moments</span></h2><p>Tell us your ideas, we'll bake your dreams!</p><a href="mailto:hello@cakeshop.com?subject=Custom%20Cake%20Order" class="btn btn-white">ORDER CUSTOM CAKE →</a></div>
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85" alt="Custom chocolate cake">
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div id="about"><a class="logo" href="#"><span class="cake">🎂</span><span>Cake<em>Shop</em><small>— Baked with Love —</small></span></a><p>We bake more than cakes,<br>we bake happiness!<br>Thank you for choosing us.</p><div class="social">🔵 📸 🟢</div></div>
+      <div><h4>Quick Links</h4><a href="#">Home</a><a href="#shop">Shop</a><a href="#about">About Us</a><a href="#contact">Contact Us</a><a href="#">FAQs</a></div>
+      <div><h4>Customer Service</h4><a href="#">My Account</a><a href="#">Track Order</a><a href="#">Shipping Policy</a><a href="#">Return & Refund</a><a href="#">Terms & Conditions</a></div>
+      <div><h4>Newsletter</h4><p>Subscribe to get updates<br>on new cakes and offers.</p><form class="newsletter" id="newsletter"><input type="email" placeholder="Enter your email" required><button>SUBSCRIBE</button></form></div>
+    </div>
+    <div class="copyright"><span>© 2026 CakeShop. All Rights Reserved.</span><span>VISA　●●　UPI　 easyPaisa</span></div>
+  </footer>
+  <div id="toast"></div>
+  <script>
+    let cart = 0;
+    const count = document.getElementById('cartCount');
+    const toast = document.getElementById('toast');
+    function notify(message){toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)}
+    document.querySelectorAll('.add').forEach(button=>button.addEventListener('click',()=>{cart++;count.textContent=cart;notify('Cake added to your cart!')}));
+    document.querySelectorAll('.heart').forEach(button=>button.addEventListener('click',()=>{button.textContent=button.textContent==='♡'?'♥':'♡';notify(button.textContent==='♥'?'Added to wishlist':'Removed from wishlist')}));
+    document.getElementById('newsletter').addEventListener('submit',event=>{event.preventDefault();notify('Thank you for subscribing!');event.target.reset()});
+  </script>
+</body>
+</html>
